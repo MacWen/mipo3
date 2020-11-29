@@ -8,4 +8,5 @@ class SendPackOperation(PackOperation):
         self.packMachine = packMachine
 
     def execute(self):
-        None
+        self.transport.setPlace(self.packMachine.id)
+        self.packMachine.put(self.transport.pack)

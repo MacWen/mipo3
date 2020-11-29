@@ -6,7 +6,8 @@ class MachineFreeSpaceVisitor:
         self.quantities = {PackSize.A: 0, PackSize.B: 0, PackSize.C: 0}
 
     def visitBox(self, box):
-        None
+        if box.isEmpty(self):
+            self.quantities[box.size] = self.quantities[box.size] + 1
 
     def visitBoxGroup(self, boxGroup):
         None

@@ -1,14 +1,15 @@
 from .price_strategy_factory import PriceStrategyFactory
 from .size_price_strategy import SizePriceStrategy
-from .c_size_price import CSizePrice
+from .wrong_size_price import WrongSizePrice
 
 
 class PriceService:
     def __init__(self):
         self.strategyFactory = PriceStrategyFactory()
+        self.priceStrategy = WrongSizePrice()
 
     def price(self):
-        return 10
+        return self.priceStrategy.price()
 
     def setPackSize(self, size):
-        None
+        self.priceStrategy = self.strategyFactory.getPriceStrategy(self, size)
